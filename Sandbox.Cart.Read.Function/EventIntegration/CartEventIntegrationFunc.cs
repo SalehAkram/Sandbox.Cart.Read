@@ -31,7 +31,7 @@ namespace Sandbox.Cart.Read.Function.EventIntegration
             ConnectionStringSetting = "%CosmosDbSettings:ConnectionString%",
             LeaseCollectionName = "leases", 
             CreateLeaseCollectionIfNotExists = true,
-            LeaseCollectionPrefix ="cartread",
+            LeaseCollectionPrefix ="cartRead",
             FeedPollDelay =1)]
             IReadOnlyList<Document> input,
             ILogger log)
