@@ -14,12 +14,12 @@ using Newtonsoft.Json;
 
 namespace Sandbox.Cart.Read.Function.EventIntegration
 {
-    public  class CartEventIntegartionFunc
+    public  class CartEventIntegrationFunc
     {
-        private readonly ILogger<CartEventIntegartionFunc> _logger;
+        private readonly ILogger<CartEventIntegrationFunc> _logger;
         private readonly IMediator _mediator;
 
-        public CartEventIntegartionFunc(ILogger<CartEventIntegartionFunc> log, IMediator mediator)
+        public CartEventIntegrationFunc(ILogger<CartEventIntegrationFunc> log, IMediator mediator)
         {
             _logger = log;
             _mediator = mediator;
