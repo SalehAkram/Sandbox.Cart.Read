@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Sandbox.Cart.Read.Function": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7289",
+      "launchBrowser": false
+    }
+  }
+}
