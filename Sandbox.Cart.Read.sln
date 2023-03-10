@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.Cart.Read.Function"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cart.Read.Core", "Cart.Read.Core\Cart.Read.Core.csproj", "{4D67A2C2-D466-43E3-ADF4-63EB373C6CE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.Cart.Read.Function", "UnitTest.Cart.Read.Function\UnitTest.Cart.Read.Function.csproj", "{2CEF9C73-57E7-48C2-A85B-228001E98CDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest.Cart.Read.Function", "UnitTest.Cart.Read.Function\UnitTest.Cart.Read.Function.csproj", "{2CEF9C73-57E7-48C2-A85B-228001E98CDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.Cart.Infra", "Sandbox.Cart.Infra\Sandbox.Cart.Infra.csproj", "{233EAB06-B81D-4E71-B98E-CC5F52A2B1F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{2CEF9C73-57E7-48C2-A85B-228001E98CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CEF9C73-57E7-48C2-A85B-228001E98CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CEF9C73-57E7-48C2-A85B-228001E98CDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{233EAB06-B81D-4E71-B98E-CC5F52A2B1F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{233EAB06-B81D-4E71-B98E-CC5F52A2B1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{233EAB06-B81D-4E71-B98E-CC5F52A2B1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{233EAB06-B81D-4E71-B98E-CC5F52A2B1F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,6 +22,10 @@
     <Folder Include="Queries\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Cart.Read.Core\Cart.Read.Core.csproj" />
+    <ProjectReference Include="..\Sandbox.Cart.Infra\Sandbox.Cart.Infra.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Domain.Events">
       <HintPath>..\..\Sandbox.Domain.Events\Domain.Events\bin\Debug\net6.0\Domain.Events.dll</HintPath>
     </Reference>
