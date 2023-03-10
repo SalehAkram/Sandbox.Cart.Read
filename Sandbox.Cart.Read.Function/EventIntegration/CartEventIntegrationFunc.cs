@@ -57,6 +57,7 @@ namespace Sandbox.Cart.Read.Function.EventIntegration
                     throw;
                 }
             }
+    
         }
         public  Event GetEvent(EventStream eventStream)
         {
