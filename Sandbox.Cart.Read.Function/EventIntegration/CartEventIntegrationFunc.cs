@@ -24,6 +24,7 @@ namespace Sandbox.Cart.Read.Function.EventIntegration
             _logger = log;
             _mediator = mediator;
         }
+       
         [FunctionName("CartEventIntegartionFunc")]
         public async Task  Run([CosmosDBTrigger(
             databaseName: "%CosmosDbSettings:DatabaseName%",
