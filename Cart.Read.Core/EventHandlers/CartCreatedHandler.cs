@@ -1,4 +1,6 @@
-﻿using Domain.Events.Cart;
+﻿using Cart.Read.Core.Contracts;
+using Cart.Read.Core.Entities;
+using Domain.Events.Cart;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,9 +12,18 @@ namespace Cart.Read.Core.EventHandlers
 {
     public class CartCreatedHandler : IRequestHandler<CartCreated>
     {
-        public Task Handle(CartCreated request, CancellationToken cancellationToken)
+        private readonly IUnitOfWork _unitOfWork;
+        public CartCreatedHandler(IUnitOfWork unitOfWork)
         {
-            throw new NotImplementedException();
+            _unitOfWork = unitOfWork;
+        }
+
+        public async Task Handle(CartCreated request, CancellationToken cancellationToken)
+        {
+            var cart = await _unitOfWork.FoodCartRepository.GetByIdAsync(request.Id);
+            if (cart != null)
+                throw new InvalidOperationException(message: "Unable to create the cart. Cart with that Id already exists");
+            cart = new FoodCart(request.Id, request.CustomerId, request.RestaurantId, request.EventDateTime, request.Version);
         }
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Cart.Read.Core.ValueObjects
 {
-    public class CartStatus
+    [ComplexType]
+    public class CartStatus 
     {
         public string Status { get; private set; }
         public DateTime DateUpdated { get; private set; }
@@ -15,6 +16,5 @@ namespace Cart.Read.Core.ValueObjects
             Status = status;
             DateUpdated = dateUpdated;
         }
-     
     }
 }

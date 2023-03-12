@@ -1,15 +1,14 @@
-﻿using Cart.Read.Core.Contracts;
+﻿
+using Cart.Read.Core.Contracts;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sandbox.Cart.Infra.Repository;
+using Sandbox.Cart.Infra;
 using Sandbox.Cart.Read.Function.EventIntegration;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 [assembly: FunctionsStartup(typeof(Sandbox.Cart.Read.Function.Startup))]
 namespace Sandbox.Cart.Read.Function
 {
@@ -38,7 +37,8 @@ namespace Sandbox.Cart.Read.Function
             });
             var handlerAssembly = AppDomain.CurrentDomain.Load("Cart.Read.Core");
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(handlerAssembly));
-            builder.Services.AddScoped<ICartRepository, CartRepository>();
+            builder.Services.AddSqlServer(config);
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
         public string GetEnvironmentVariable(string name)
         {

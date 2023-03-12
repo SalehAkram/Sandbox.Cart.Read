@@ -8,9 +8,9 @@ namespace Cart.Read.Core.Contracts
 {
     public interface IUnitOfWork
     {
-        ICartRepository CartRepository { get; }
-        int SaveChanges();
-
+        IFoodCartRepository FoodCartRepository { get; }
         Task<int> SaveChangesAsync();
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }
