@@ -33,6 +33,7 @@ namespace Cart.Read.Core.Entities
         {
             if (Id != cartId)
                 throw new InvalidOperationException(message: "Attempting add an item to the wrong Cart");
+
             var existingItem = _items.FirstOrDefault(x => x.ItemId == itemId);
             if (existingItem != null)
                 throw new InvalidOperationException(message: "Attempting add duplicate item. You can only increase quantity of an existing item");

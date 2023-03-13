@@ -23,6 +23,7 @@ namespace Cart.Read.Core.EventHandlers
             var cart = await _unitOfWork.FoodCartRepository.GetByIdAsync(request.Id);
             if (cart != null)
                 throw new InvalidOperationException(message: "Unable to create the cart. Cart with that Id already exists");
+
             cart = new FoodCart(request.Id, request.CustomerId, request.RestaurantId, DateTime.UtcNow, request.Version);
              _unitOfWork.FoodCartRepository.Add(cart);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
