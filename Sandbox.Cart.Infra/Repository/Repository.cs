@@ -42,20 +42,13 @@ namespace Sandbox.Cart.Infra.Repository
         {
             return await _dbSet.FindAsync(id).ConfigureAwait(false);
         }
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
-        {
-            return await _dbSet.ToListAsync().ConfigureAwait(false);
-        }
-        public async Task<IEnumerable<TEntity>> GetAllAsync<TProperty>(Expression<Func<TEntity, TProperty>> include)
-        {
-            IQueryable<TEntity> query = _dbSet.Include(include);
 
-            return await query.ToListAsync().ConfigureAwait(false);
-        }
-        public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes)
         {
-            return await _dbSet.SingleOrDefaultAsync(predicate).ConfigureAwait(false);
+            var query = _dbSet.Where(predicate);
+            includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+            var toReturn = await query.ToListAsync();
+            return toReturn.FirstOrDefault();
         }
-
     }
 }

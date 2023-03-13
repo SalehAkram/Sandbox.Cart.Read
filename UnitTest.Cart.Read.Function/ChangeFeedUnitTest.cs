@@ -9,6 +9,7 @@ using Domain.Events.Dto;
 using Newtonsoft.Json;
 using Domain.Events;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration.EnvironmentVariables;
 
 namespace UnitTest.Cart.Read.Function
 {
@@ -73,8 +74,8 @@ namespace UnitTest.Cart.Read.Function
 
             var eventType = "Domain.Events.Cart.ItemAdded,Domain.Events";
             var itemId = Guid.NewGuid();
-
-            var itemAdded = new ItemAdded(itemId, 2, "USD", 1);
+            var cartId = Guid.NewGuid();
+            var itemAdded = new ItemAdded(cartId,itemId, 2, "USD", 1);
             var data = JsonConvert.SerializeObject(itemAdded);
             var eventStream = new EventStream(eventType, data, itemId.ToString(), itemId.ToString(), DateTime.UtcNow, 1);
             var eventStreamJson = JsonConvert.SerializeObject(eventStream);

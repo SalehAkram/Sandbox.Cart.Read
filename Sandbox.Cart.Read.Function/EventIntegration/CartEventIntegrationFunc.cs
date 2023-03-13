@@ -49,6 +49,7 @@ namespace Sandbox.Cart.Read.Function.EventIntegration
                 {
                     var eventStream = JsonConvert.DeserializeObject<EventStream>(item.ToString());
                     var typedEvent = GetEvent(eventStream);
+                    typedEvent.Version = eventStream.Version;
                     await _mediator.Send(typedEvent);
 
                 }

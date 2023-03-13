@@ -19,20 +19,24 @@ namespace Cart.Read.Core.Entities
         private readonly List<FoodItem> _items;
         public IReadOnlyCollection<FoodItem> Items => _items;
         public FoodCart() { }
-        public FoodCart(Guid id, Guid customerId, Guid restaurantId, DateTime dateCreated, string eventVersion)
+        public FoodCart(Guid id, Guid customerId, Guid restaurantId, DateTime dateCreated, int eventVersion)
         {
             Id = id;
             CustomerId = customerId;
             RestaurantId = restaurantId;
             DateCreated = dateCreated;
             CartStatus = new CartStatus("Created", dateCreated);
-            if (int.TryParse(eventVersion, out int version))
-                EventVersion = version;
-            else
-                throw new InvalidOperationException(message: "Event version could not be ascertained");
+            EventVersion = eventVersion;
+          
         }
         public void AddItemToCart(Guid itemId, Guid cartId, int quantity, decimal price)
         {
+            if (Id != cartId)
+                throw new InvalidOperationException(message: "Attempting add an item to the wrong Cart");
+            var existingItem = _items.FirstOrDefault(x => x.Id == itemId);
+            if (existingItem == null)
+                throw new InvalidOperationException(message: "Attempting add duplicate item. You can only increase quantity of an existing item");
+           
             _items.Add(new FoodItem(itemId, cartId, quantity, price));
         }
     }
